@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function displayName() {
+        var name = prompt("Enter Name");
+        var outname = document.getElementById("display");
+        console.log(outname);
+        console.log(name);
+        outname.value = name;
+        }
+    </script>
+</head>
+<body>
+    <h1>Form</h1>
+    
+    <label> Name : </label><br>
+    <input id="display" type= "text" value="">
+    <script>
+       displayName();
+    </script>
+</body>
+</html>

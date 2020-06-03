@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+        $(() => {
+            var socket = io.connect('http://localhost:5050');
+            $("#submit").click(function () {
+                var refreshNote = true;
+                socket.emit('refresh', {note: refreshNote})
+            })
+            $.getJSON('http://localhost:5050', (errors) => {
+              console.log(errors);
+            })
+        })
+    </script>
+</head>
+
+<body>
+<video class="grayscale" autoplay muted loop id="myVideo">
+  <source src="video/coverr-bird-walking-on-the-beach-1578584793241.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="content">
+  <div class="cont-menu">
+  <h1>Joseph</h1>
+  <h1>Fletcher</h1>
+  </div>
+  <button id="myBtn" onclick="">About</button>
+  <button id="myBtn" onclick="openNav()">Skills</button>
+  <button id="myBtn" onclick="openContact()">Contact</button>
+  <div id="myCollab" onclick="openSignIn()">
+    <img src="img/bbcollab.png">
+  </div>
+</div>
+<!--About me section-->
+<div id="Contact" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">&times;</a>
+  <div id="res-c" class="overlay-about">
+    <div class="card">
+      <img src="img/moocowtechlogo.png" alt="moocow" style="width:100%">
+      <h2>Joseph Fletcher</h2>
+      <p class="title">CEO & Founder, MooCowTech</p>
+      <p>Bristol Community College</p>
+      <div class="icons" style="margin: 24px 0;">
+      <a href="#"><i class="fa fa-github"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+    </div>
+    </div>
+  </div>
+</div>
+<!--End about me section-->
+
+<!--Skills Section-->
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div id="res-w" class="overlay-content">
+    <p>HTML</p>
+    <div class="container">
+      <div class="skills html">90%</div>
+    </div>
+    
+    <p>CSS</p>
+    <div class="container">
+      <div class="skills css">80%</div>
+    </div>
+    
+    <p>JavaScript / ES6</p>
+    <div class="container">
+      <div class="skills js">85%</div>
+    </div>
+    
+    <p>PHP</p>
+    <div class="container">
+      <div class="skills php">80%</div>
+    </div>
+    
+    <p>C++</p>
+    <div class="container">
+      <div class="skills cpp">55%</div>
+    </div>
+    
+    <p>Java</p>
+    <div class="container">
+      <div class="skills java">60%</div>
+    </div>
+ 
+    <p>C#</p>
+    <div class="container">
+      <div class="skills cs">70%</div>
+    </div>
+    
+    <p>Visual Basic</p>
+    <div class="container">
+      <div class="skills basic">85%</div>
+    </div>
+    
+    <h2>Libraries</h2>
+
+    <p>jQuery</p>
+    <div class="container">
+      <div class="skills jq">80%</div>
+    </div>
+    
+    <p>React</p>
+    <div class="container">
+      <div class="skills react">50%</div>
+    </div>
+    
+    <h2>Javascript Runtime</h2>
+    <p>Express</p>
+    <div class="container">
+      <div class="skills express">40%</div>
+    </div>
+    
+    <p>Node.js</p>
+    <div class="container">
+      <div class="skills node">55%</div>
+    </div>
+    
+    <h2>Frameworks</h2>
+    <p>ASP.NET Core</p>
+    <div class="container">
+      <div class="skills asp">50%</div>
+    </div>
+    <p>.NET Core Entity</p>
+    <div class="container">
+      <div class="skills core">50%</div>
+    </div>
+    <p>Bootstrap</p>
+    <div class="container">
+      <div class="skills boot">80%</div>
+    </div>
+    
+  </div>
+</div>
+<!--End Skills Section-->
+
+<!--Sign In-->
+<div id="Collab" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeSignIn()">&times;</a>
+  <div class="overlay-collab">
+    <h1>CIS Drop In Session</h1>
+    <h1>Sign In</h1>
+   <form method="post" action="/session" id="frm-w"class="collab-log" >
+      <input type="text" id="firstname" name="firstname" placeholder="First Name" onfocus="this.placeholder=''" onblur="this.placeholder='First Name'"><br>
+      <input type="text" id="lastname" name="lastname" placeholder="Last Name" onfocus="this.placeholder=''" onblur="this.placeholder='Last Name'"><br>
+      <input type="text" id="email" name="email" placeholder="BCC Email" onfocus="this.placeholder=''" onblur="this.placeholder='BCC Email'"><br>
+      <input type="text" id="course" name="course" placeholder="Course" onfocus="this.placeholder=''" onblur="this.placeholder='Course'">
+      <input id="submit" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+<!--End Sign In-->
+
+<!--Callout Section-->
+<div class="callout">
+  <button class="callout-header" onclick="dispNotes()"><h5>Programmer Seeking Employment</h5><span style="float:right;">+</span></button>
+  <div class="callout-container" id="notes">
+    <h4>Graduating May 30th</h4>
+    <h5>I am a fast learning Marine Corps veteran with the ability to problem solve, communicate, and learn. Seeking employement in the tech industry. Have experience and course work including UI/UX design, database design, MVC / UML Architecture and Server based technologies. </h5>
+  </div>
+</div> 
+<!--End Callout Section-->
+
+<script src="js/index.js"></script>
+<script>
+ //attach this to external button for play pause features 
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
+
+</body>
+</html>
